@@ -1,0 +1,9 @@
+---¿Qué es JS?---
+
+Puede utilizarse para Desarrollo Web desde, front, back, fullstack o Mobile
+
+---Frameworks---
+
+Vue, Angular o React, esta última es la más utilizada
+
+
