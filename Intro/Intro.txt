@@ -6,4 +6,6 @@ Puede utilizarse para Desarrollo Web desde, front, back, fullstack o Mobile
 
 Vue, Angular o React, esta última es la más utilizada
 
+---Recomendaciones de JS---
 
+Colocar todos los scripts al final, para que sea lo ultimo que se descarge al ejecutarse
