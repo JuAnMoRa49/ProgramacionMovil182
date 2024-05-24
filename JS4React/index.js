@@ -1,9 +1,9 @@
 
 // función básica
-function suma(a, b){
+function sumabas(a, b){
     return a+b;
 }
-console.log(suma(2,3));
+console.log(sumabas(2,3));
 
 
 // función fatArrow
@@ -54,3 +54,58 @@ boton.addEventListener('click', function(){
     titulo.innerText="Evento click ejecutado"
     alert('Exito')
 })
+
+// Trabajo con arreglos
+
+const nombres = ['Juan', 'Isa', 'Pablo', 'Jose Carlos']
+
+for(let i = 0; i< nombres.length; i++){
+    const elemento= nombres[i]
+    console.log(elemento)
+
+}
+
+// Funcion ForEach, permite repetir por cada elemento en el arreglo
+nombres.forEach(function (nombre){
+    console.log(nombre)
+})
+
+// Funcion Map permite hacer una copia de un Array
+const array2= nombres.map(function (nombre){
+    console.log(nombre)
+    return nombre
+})
+
+console.log(nombres)
+console.log(array2)
+
+// Funcion FIND, permite ubicar un elemento del arreglo
+const resufind = nombres.find(function (nombre){
+    if (nombre === 'Isa'){
+        return nombre
+    }
+})
+console.log(resufind)
+
+// Funcion FILTER, recorre el arreglo filtrando el resultado a otro
+const resufilter = nombres.filter(function (nombre){
+    if (nombre != 'Isa'){
+        return nombre
+    }
+})
+console.log(resufilter)
+
+// Funcion Concat
+const edades=['76, 32, 21, 34, 43']
+console.log(nombres.concat(edades))
+
+// Spread Operator 
+console.log([...nombres, ...edades])
+
+
+// Modulos de importación y exportación
+
+import * as calc from "./calculadora.js"
+
+console.log(suma(23,34))
+console.log(resta(18-6))
