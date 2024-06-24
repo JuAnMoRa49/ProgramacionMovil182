@@ -1,5 +1,5 @@
 import { setStatusBarStyle, StatusBar} from 'expo-status-bar';
-import { StyleSheet, Text, View, Button, TextInput, Dimensions, TouchableOpacity } from 'react-native';
+import { StyleSheet, Text, View, Button, TextInput, Dimensions, TouchableOpacity, ScrollView } from 'react-native';
 // Importación para el cambio de estados en JS
 import { useState } from 'react';
 
@@ -29,6 +29,7 @@ export default function App() {
   return (
     <View style={styles.container}>
 
+      <ScrollView style={styles.ScrollView}>
       {/* Se cran los textos con contenido con diferentes bg */}
       {/* <Texto estilo={styles.bgRed} contenido={contenido}/>
       <Texto estilo={styles.bgGreen} contenido={contenido}/>
@@ -41,11 +42,56 @@ export default function App() {
 
       {/* Titulo para el text Input, o para recibir el texto al presionar el boton */}
       <Text>Componente Text Input: {submit}</Text>
+      <Text>Componente Text Input: {submit}</Text>
+      <Text>Componente Text Input: {submit}</Text>
+      <Text>Componente Text Input: {submit}</Text>
+      <Text>Componente Text Input: {submit}</Text>
+      <Text>Componente Text Input: {submit}</Text>
+      <Text>Componente Text Input: {submit}</Text>
+      <Text>Componente Text Input: {submit}</Text>
+      <Text>Componente Text Input: {submit}</Text>
+      <Text>Componente Text Input: {submit}</Text>
+      <Text>Componente Text Input: {submit}</Text>
+      <Text>Componente Text Input: {submit}</Text>
+      <Text>Componente Text Input: {submit}</Text>
+      <Text>Componente Text Input: {submit}</Text>
+      <Text>Componente Text Input: {submit}</Text>
+      <Text>Componente Text Input: {submit}</Text>
+      <Text>Componente Text Input: {submit}</Text>
+      <Text>Componente Text Input: {submit}</Text>
+      <Text>Componente Text Input: {submit}</Text>
+      <Text>Componente Text Input: {submit}</Text>
+      <Text>Componente Text Input: {submit}</Text>
+      <Text>Componente Text Input: {submit}</Text>
+      <Text>Componente Text Input: {submit}</Text>
+      <Text>Componente Text Input: {submit}</Text>
+      <Text>Componente Text Input: {submit}</Text>
+      <Text>Componente Text Input: {submit}</Text>
+      <Text>Componente Text Input: {submit}</Text>
+      <Text>Componente Text Input: {submit}</Text>
+      <Text>Componente Text Input: {submit}</Text>
+      <Text>Componente Text Input: {submit}</Text>
+      <Text>Componente Text Input: {submit}</Text>
+      <Text>Componente Text Input: {submit}</Text>
+      <Text>Componente Text Input: {submit}</Text>
+      <Text>Componente Text Input: {submit}</Text>
+      <Text>Componente Text Input: {submit}</Text>
+      <Text>Componente Text Input: {submit}</Text>
+      <Text>Componente Text Input: {submit}</Text>
+      <Text>Componente Text Input: {submit}</Text>
+      <Text>Componente Text Input: {submit}</Text>
+      <Text>Componente Text Input: {submit}</Text>
+      <Text>Componente Text Input: {submit}</Text>
+      <Text>Componente Text Input: {submit}</Text>
+      <Text>Componente Text Input: {submit}</Text>
+      <Text>Componente Text Input: {submit}</Text>
       {/* Se establece un textInput con estilos y que al cambiar el texto, cambie tambien el valor en el titulo */}
       <TextInput style={styles.input} placeholder="Escribe algo" onChangeText={(t)=>setText(t)} value={text}/>
       {/* Se realiza un boton con una accion onPress, para que haga algo al presionarlo */}
       <Button style={styles.boton} title='Push me' onPress={ ()=>{setSubmit(text); alert('Texto Enviado')}}/>
       <TouchableOpacity style={styles.opacity} onPress={ ()=>{setSubmit(text); alert('Opacity')}}>Press Me </TouchableOpacity>
+
+      </ScrollView>
 
       <StatusBar style="auto" />
     </View>
@@ -65,7 +111,7 @@ const styles = StyleSheet.create({
   },
   input: {
     padding:'1rem',
-    marginTop:'1rem',
+    margin:'1rem',
     width: width*0.2,
     height:height*0.01,
     borderRadius:width*0.05,
@@ -82,6 +128,9 @@ const styles = StyleSheet.create({
     borderWidth:'1px',
     borderColor:'#000000',
     backgroundColor:"#787878"
+  },
+  ScrollView: {
+    width: Dimensions.get('window').width
   }
 
 
