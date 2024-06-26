@@ -1,44 +1,34 @@
 import { setStatusBarStyle, StatusBar} from 'expo-status-bar';
-import { StyleSheet, Text, View, Dimensions, FlatList, SectionList} from 'react-native';
+import { StyleSheet, Text, View, Dimensions, FlatList, ActivityIndicator} from 'react-native';
 // Importación para el cambio de estados en JS
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 const {width, height} = Dimensions.get("window")
 
 export default function App() {
 
+  const [user,setUser]= useState ([])
+  const [loading,setLoading]= useState(true)
+
+  useEffect(()=>{
+    fetch('https://jsonplaceholder.typicode.com/users')
+    .then(response=> response.json())
+    .then(data=>{setUser(data), setLoading(false)})
+  },[])
+
+  if (loading){
+    return <View style={styles.center}>
+      <ActivityIndicator size='large' color='#449A00'/>
+        <Text> Cargando... </Text>
+    </View>
+  }
+
   return (
     <View style={styles.container}>
 
-      <SectionList
-        sections={[
-          {title:'Grupo A',
-          data:[{key:1,name:'Juan'},
-          {key:2,name:'Gadiel'},
-          {key:3,name:'Fernando'},
-          {key:4,name:'Gollo'},
-          {key:5,name:'Kevin'},
-          {key:6,name:'Ricardo'},]
-          },
-          {title:'Grupo B',
-          data:[{key:7,name:'Alan'},
-          {key:8,name:'Pablo'},
-          {key:9,name:'Elias'},
-          {key:10,name:'Isa'},
-          {key:11,name:'Maya'},
-          {key:12,name:'Diego'},]
-          },
-          {title:'Grupo C',
-          data:[{key:13,name:'Daniel'},
-          {key:14,name:'Angel'},
-          {key:15,name:'Fatima'},
-          {key:16,name:'Brenda'},
-          {key:17,name:'Roberto'},
-          {key:18,name:'Josue'},]
-          },
-        ]}
-        renderItem={({item})=> <Text style={styles.item}> {item.name} </Text> } 
-        renderSectionHeader={({section})=> <Text style={styles.title}> {section.title}</Text>}
+      <FlatList
+      data={user}
+      renderItem ={({item})=> <Text style={styles.item}> {item.username} {item.address.city} </Text>}
       />
 
       <StatusBar style="auto" />
@@ -68,6 +58,12 @@ const styles = StyleSheet.create({
     color:'white',
     paddingVertical:'1rem',
     paddingHorizontal:'2rem'
+  },
+
+  center:{
+    flex:1,
+    alignItems:'center',
+    justifyContent: 'center',
   }
   
 });
