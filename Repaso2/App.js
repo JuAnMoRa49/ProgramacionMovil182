@@ -1,6 +1,7 @@
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View, Dimensions, FlatList, TextInput, TouchableOpacity, ImageBackground, Alert } from 'react-native';
 import React, { useState } from 'react';
+import Prueba from './screens/Prueba';
 
 const { width, height } = Dimensions.get("window");
 
@@ -41,33 +42,36 @@ export default function App() {
   };
 
   return (
-    <ImageBackground source={require('./assets/movie.jpeg')} style={styles.background}>
-      <View style={styles.back}>
-        <View style={styles.containerTop}>
-          <Text style={styles.title}>Búsqueda de Películas</Text>
-        </View>
-        <TextInput
-          style={styles.input}
-          value={search}
-          onChangeText={(text) => setSearch(text)}
-          placeholder={'Introduce el nombre de la película'}
-        />
-        <TouchableOpacity style={styles.search} onPress={buscar}>
-          <Text style={styles.searchText}>Buscar</Text>
-        </TouchableOpacity>
-        <FlatList
-          data={filteredData}
-          renderItem={({ item }) => (
-            <View style={styles.item}>
-              <Text style={styles.itemTitle}>{item.title}</Text>
-              <Text style={styles.itemYear}>{item.year}</Text>
-            </View>
-          )}
-          keyExtractor={item => item.id}
-        />
-        <StatusBar style="auto" />
-      </View>
-    </ImageBackground>
+
+    <Prueba>Prueba</Prueba>
+
+    // <ImageBackground source={require('./assets/movie.jpeg')} style={styles.background}>
+    //   <View style={styles.back}>
+    //     <View style={styles.containerTop}>
+    //       <Text style={styles.title}>Búsqueda de Películas</Text>
+    //     </View>
+    //     <TextInput
+    //       style={styles.input}
+    //       value={search}
+    //       onChangeText={(text) => setSearch(text)}
+    //       placeholder={'Introduce el nombre de la película'}
+    //     />
+    //     <TouchableOpacity style={styles.search} onPress={buscar}>
+    //       <Text style={styles.searchText}>Buscar</Text>
+    //     </TouchableOpacity>
+    //     <FlatList
+    //       data={filteredData}
+    //       renderItem={({ item }) => (
+    //         <View style={styles.item}>
+    //           <Text style={styles.itemTitle}>{item.title}</Text>
+    //           <Text style={styles.itemYear}>{item.year}</Text>
+    //         </View>
+    //       )}
+    //       keyExtractor={item => item.id}
+    //     />
+    //     <StatusBar style="auto" />
+    //   </View>
+    // </ImageBackground>
   );
 }
 
