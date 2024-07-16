@@ -3,12 +3,15 @@ import { StyleSheet, Text, View, Dimensions, FlatList, TextInput, TouchableOpaci
 import React, { useState } from 'react';
 import Prueba from './screens/Prueba';
 
+// Obtener dimensiones de la pantalla
 const { width, height } = Dimensions.get("window");
 
 export default function App() {
+  // Estados para almacenar la búsqueda del usuario y los datos filtrados
   const [search, setSearch] = useState('');
   const [filteredData, setFilteredData] = useState([]);
 
+  // Datos de películas
   const data = [
     { id: '1', title: 'The Shawshank Redemption', year: 1994 },
     { id: '2', title: 'The Godfather', year: 1972 },
@@ -22,59 +25,36 @@ export default function App() {
     { id: '10', title: 'Goodfellas', year: 1990 },
   ];
 
+  // Función de búsqueda
   const buscar = () => {
+    // Si el campo de búsqueda está vacío, mostrar todos los datos
     if (search.trim() === '') {
       setFilteredData(data);
-      return ite;
+      return;
     }
 
+    // Filtrar los datos de las películas según el texto de búsqueda
     const filtered = data.filter(item => {
       const itemData = item.title.toUpperCase();
       const textData = search.toUpperCase();
       return itemData.includes(textData);
     });
 
+    // Mostrar alerta si no hay coincidencias
     if (filtered.length === 0) {
       alert('Sin coincidencias, no se encontraron películas con ese título.');
     }
 
+    // Actualizar los datos filtrados
     setFilteredData(filtered);
   };
 
   return (
-
     <Prueba>Prueba</Prueba>
-
-    // <ImageBackground source={require('./assets/movie.jpeg')} style={styles.background}>
-    //   <View style={styles.back}>
-    //     <View style={styles.containerTop}>
-    //       <Text style={styles.title}>Búsqueda de Películas</Text>
-    //     </View>
-    //     <TextInput
-    //       style={styles.input}
-    //       value={search}
-    //       onChangeText={(text) => setSearch(text)}
-    //       placeholder={'Introduce el nombre de la película'}
-    //     />
-    //     <TouchableOpacity style={styles.search} onPress={buscar}>
-    //       <Text style={styles.searchText}>Buscar</Text>
-    //     </TouchableOpacity>
-    //     <FlatList
-    //       data={filteredData}
-    //       renderItem={({ item }) => (
-    //         <View style={styles.item}>
-    //           <Text style={styles.itemTitle}>{item.title}</Text>
-    //           <Text style={styles.itemYear}>{item.year}</Text>
-    //         </View>
-    //       )}
-    //       keyExtractor={item => item.id}
-    //     />
-    //     <StatusBar style="auto" />
-    //   </View>
-    // </ImageBackground>
   );
 }
 
+// Estilos de la aplicación
 const styles = StyleSheet.create({
   background: {
     flex: 1,

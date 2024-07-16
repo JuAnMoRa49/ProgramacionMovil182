@@ -1,21 +1,26 @@
 import { StatusBar } from 'expo-status-bar';
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { StyleSheet, Text, View, TextInput, Dimensions, TouchableOpacity, ImageBackground } from 'react-native';
-import { useState } from 'react';
-// Importacion para splashscreen
+// Importación para splashscreen
 import { SplashScreen } from 'expo';
 
+// Obtener dimensiones de la pantalla
+const { width, height } = Dimensions.get("window");
+
 export default function App() {
+  // Declaración de estados para almacenar el nombre, email y contraseña
   const [nombre, setNombre] = useState('');
   const [email, setEmail] = useState('');
   const [contraseña, setContraseña] = useState('');
 
+  // useEffect se usa para manejar el splash screen
   useEffect(() => {
     SplashScreen.preventAutoHideAsync(); // Evita que la Splash Screen se oculte automáticamente
     setTimeout(() => SplashScreen.hideAsync(), 3000); // Oculta la Splash Screen después de 3 segundos
   }, []);
 
-  const imagen = require('./assets/background.png'); // Importa la imagen de fondo
+  // Importa la imagen de fondo
+  const imagen = require('./assets/background.png');
 
   return (
     <ImageBackground source={imagen} resizeMode="cover" style={styles.imagen}>
@@ -57,7 +62,7 @@ export default function App() {
 }
 
 const styles = StyleSheet.create({
-  // Se establecen los estilos de la imagen, con el ancho total de la pantalla
+  // Establece los estilos de la imagen de fondo, ocupando toda la pantalla
   imagen: {
     flex: 1,
     justifyContent: 'center',
@@ -65,6 +70,7 @@ const styles = StyleSheet.create({
     width: width,
     height: height,
   },
+  // Estilo del contenedor principal, con fondo semi-transparente para mayor legibilidad
   container: {
     justifyContent: 'center',
     alignItems: 'center',
@@ -72,6 +78,7 @@ const styles = StyleSheet.create({
     width: '100%',
     height: '100%',
   },
+  // Estilo del contenedor del formulario, con fondo blanco y bordes redondeados
   cont: {
     backgroundColor: '#FFF',
     padding: 20,
@@ -80,11 +87,13 @@ const styles = StyleSheet.create({
     borderRadius: 20,
     width: width * 0.4,
   },
+  // Estilo del texto de las etiquetas
   text: {
     fontSize: 18,
     color: 'green',
     marginTop: 10,
   },
+  // Estilo de los campos de texto
   input: {
     borderColor: '#535353',
     borderWidth: 2,
@@ -93,6 +102,7 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     marginTop: 10,
   },
+  // Estilo del botón de envío
   opacity: {
     justifyContent: 'center',
     alignItems: 'center',
@@ -103,6 +113,7 @@ const styles = StyleSheet.create({
     marginTop: 10,
     paddingVertical: 10,
   },
+  // Estilo del texto del botón
   buttonText: {
     color: '#FFF',
     fontSize: 16,
